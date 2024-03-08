@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  scroll-behavior: smooth;
+}
+/* 
+ ==============================
+ ======== Banner ==============
+ ==============================
+*/
+.banner {
+  border: 3px solid rebeccapurple;
+  width: 100%;
+  height: 100%;
+  margin-top: 8rem;
+  margin-bottom: 10rem;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 
+ ==============================
+ ==== Now showing carousel ====
+ ==============================
+*/
+/* 
+ ==============================
+ ==== coming soon carousel ====
+ ==============================
+*/
+.wrapper {
+  width: 100%;
+  position: relative;
+  margin: 50rem 0;
+}
+.wrapper .carousel {
+  display: flex;
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+.wrapper i {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  top: 35%;
+  text-align: center;
+  /* line-height: 55px; */
+  font-size: 5rem;
+  background-color: transparent;
+  color: black;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+  transform: translateY(-50%) scale(0.85);
+}
+.wrapper i:first-child {
+  left: 0.5%;
+}
+.wrapper i:last-child {
+  right: 0.5%;
+}
+
+.card {
+  scroll-snap-align: start;
+  height: 50rem;
+  background: #000025;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  /* border: 3px solid red; */
+}
+.card img {
+  width: 25.3rem;
+  height: 35rem;
+  object-fit: cover;
+}
+.card .movie-info {
+  color: #fff;
+  text-align: center;
+  /* font-size: 1.5rem; */
+  padding: 10px 0;
+}
+.movie-info p {
+  margin: 10px 0;
+  font-size: 1.4rem;
+}
+.movie-info p:first-child:hover {
+  color: #910a67;
+}
+/* watch trailer and ticket links */
+.card a {
+  padding: 15px 0px 10px 50px;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap;
+}
+
+/* 
+ =======================
+ ====== video ========== 
+ =======================
+*/
+.video-container {
+  /* width: 85rem;
+  height: 30rem; */
+  background-color: transparent;
+  position: fixed;
+  left: 20%;
+  top: 10%;
+  z-index: 10;
+
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.show-video {
+  display: block;
+}
+.remove-video {
+  display: none;
+}
+
+iframe {
+  /* width: 85rem;
+  height: 45rem; */
+  border-radius: 15px;
+}
+.close-btn {
+  font-size: 50px;
+  background-color: transparent;
+  color: red;
+  border: none;
+  /* margin-left: 82rem; */
+  cursor: pointer;
+}
+/*=============================
+ ===== responsive video========
+ ============================== */
+@media (min-width: 576px) {
+  /* Styles for small devices */
+  .video-container {
+    top: 30%;
+    left: 1%;
+    width: 40rem;
+    height: 30rem;
+  }
+  iframe {
+    width: 40rem;
+    height: 30rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Styles for medium devices */
+  .video-container {
+    top: 20%;
+    left: 1%;
+    width: 47rem;
+    height: 25rem;
+  }
+  iframe {
+    width: 47rem;
+    height: 25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Styles for large devices */
+  .video-container {
+    top: 25%;
+    left: 1%;
+    width: 60rem;
+    height: 35rem;
+  }
+  iframe {
+    width: 60rem;
+    height: 35rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Styles for extra large devi */
+  .video-container {
+    left: 20%;
+    top: 20%;
+    width: 70rem;
+    height: 35rem;
+  }
+  iframe {
+    width: 70rem;
+    height: 35rem;
+  }
+}
