@@ -20,7 +20,7 @@
 
         <!-- logo container -->
         <div class="logo-container">
-            <a href="#">Cineplex</a>
+            <a href="#">Cineplex |</a>
         </div>
         <!-- nav links -->
         <ul class="nav-list">
@@ -33,34 +33,36 @@
         </ul>
         <!-- login and register container -->
         <div class="login-container">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="register">Sign up</a>
+            <button class="register"><span class="cover"></span><i class="fa-regular fa-user"></i> Sign
+                up</button>
+            <button class="login"><span class="cover"></span><i class="fa-solid fa-right-to-bracket"></i>
+                Login</button>
         </div>
         <!-- nav toggle btn -->
-        <button class="nav-btn">
+        <div class="nav-btn">
             <i class="fas fa-bars"></i>
             <!-- login tag -->
             <a href="#"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-        </button>
-
-        <div class="small-movie-nav">
-            <a class="now-btn">Now showing</a>
-            <a class="upcoming-btn">Coming soon</a>
         </div>
+      
     </header>
+    <div class="small-movie-nav">
+        <a class="now-btn active">Now showing</a>
+        <a class="upcoming-btn">Coming soon</a>
+    </div>
     <!-- main content -->
     <main class="main">
-        <p class="title-one">NOW SHOWING</p>
+        <p class="title">NOW SHOWING</p>
         <!-- full screen movies -->
         <section class="now-showing"></section>
 
-        <p class="title-two">COMING SOON</p>
+        <p class="title">COMING SOON</p>
         <section class="coming-soon"></section>
 
         <!-- smaller screen movies -->
         <div class="small-container">
 
-            <section class="small-now-showing"></section>
+            <section class="small-now-showing show-movies"></section>
             <section class="small-coming-soon"></section>
         </div>
     </main>

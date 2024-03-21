@@ -190,7 +190,6 @@ $(document).ready(function (e) {
   Upcoming.html(loadSmallMain(unavailableMovies));
 });
 
-
 function sortMovies() {
   allMovieData.forEach((item) => {
     if (item.releaseDate !== undefined) {
@@ -207,7 +206,7 @@ $(".fa-bars").on("click", () => {
   $(".nav-list").toggleClass("show-nav");
 });
 
-//show active sections 
+//show active sections
 $(".small-movie-nav").on("click", (e) => {
   const btn = $(e.target);
   $(".active").removeClass("active");
@@ -220,12 +219,14 @@ const loadMovies = (arr) => {
     if (item.releaseDate !== undefined) {
       releaseDate = item.releaseDate;
     }
-    return `<div class="card-container movie" id=${item.id}>
+    return `    <div class="card-container movie" id=${item.id}>
         <div class="card">
-            <img src=${item.imageUrl}  alt="${item.movieName} movie poster">
+            <img src=${item.imageUrl} alt="${item.movieName} movie poster">
             <div class="card-body">
-                <button>Book your seat</button>
-                <button class="videoBtn">Watch trailer</button>
+                <a><i class="fa-solid fa-ticket"></i> Buy ticket <span class="box"></span></a>
+
+                <a class="videoBtn"><i class="fa-solid fa-film"></i> Watch trailer <span class="box"></span></a>
+                <a href="#"><i class="fa-solid fa-info"></i> More Info <span class="box"></span></a>
             </div>
         </div>
         <p>${item.movieName}</p>
@@ -249,8 +250,8 @@ const loadSmallMain = (arr) => {
         <div class="movie-info">
             <p>${item.movieName}</p>
             <p>${releaseDate}</p>
-            <button class="videoBtn">Watch trailer</button>
-            <a href="#">Book your seat</a>
+           <button class="videoBtn"><span class="overlay"></span><i class="fa-solid fa-film"></i> Watch trailer</button>
+           <a href="#"><i class="fa-solid fa-ticket"></i> Buy ticket </a>
         </div>
     </div>
 </div>`;
@@ -259,17 +260,21 @@ const loadSmallMain = (arr) => {
 };
 
 $(".now-btn").on("click", (e) => {
-  Now.show("fast", "swing");
-  Upcoming.hide("fast", "swing");
-  // scroll(0, 0);
+  Upcoming.hide();
+  Now.show();
+  Now.addClass("show-movies");
+  Upcoming.removeClass("show-movies");
 });
 
 $(".upcoming-btn").on("click", (e) => {
-  Upcoming.show("fast", "swing");
-  Now.hide("fast", "swing");
-  // scroll(0, 0);
+  Upcoming.show();
+  Now.hide();
+  Upcoming.addClass("show-movies");
+  Now.removeClass("show-movies");
 });
-
+// Upcoming.show("fast", "swing");
+// Now.hide("fast", "swing");
+// scroll(0, 0);
 const videoContainer = $(".video-container");
 const video = $("iframe");
 

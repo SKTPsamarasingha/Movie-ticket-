@@ -1,81 +1,3 @@
-class SpecialHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="nav-bar">
-
-        <div class="logo-container">
-            <a href="#">Cineplex </a>
-        </div>
-        <ul class="nav-list">
-            <li><a href="./index.html">HOME</a></li>
-            <li><a href="./movies.html">MOVIES</a></li>
-            <li><a href="#">TICKETS</a></li>
-            <li><a href="#">EVENTS</a></li>
-            <li><a href="#">PROMOTIONS</a></li>
-            <li><a href="#">THEATER INFO</a></li>
-        </ul>
-        <div class="login-container">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="register">Sign up</a>
-        </div>
-        <button class="nav-btn">
-            <i class="fas fa-bars"></i>
-            <a href="#"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-        </button>
-    </header>`;
-  }
-}
-
-class SpecialFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
-        <div class="footer-left">
-            <ul>
-                <li><a href="./index.html">HOME</a></li>
-                <li><a href="#">EVENTS</a></li>
-                <li><a href="./movies.html">MOVIES</a></li>
-                <li><a href="#">TICKETS</a></li>
-                <li><a href="#">PROMOTIONS</a></li>
-                <li><a href="#">THEATER INFO</a></li>
-            </ul>
-            <ul>
-                <li><a href="#">CAREERS</a></li>
-                <li><a href="#">ABOUT US</a></li>
-                <li><a href="#">ADVERTISE</a></li>
-                <li><a href="#">DISCLAIMER</a></li>
-                <li><a href="#">CONTACT US</a></li>
-                <li><a href="#">TERMS AND CONDITIONS</a></li>
-            </ul>
-            <div class="copyright">
-                <p>© Copyright 2023</p>
-                <p>Cineplex Cinema Design, Inc.</p>
-                <p>All rights reserved</p>
-            </div>
-        </div>
-        <div class="footer-right">
-            <ul>
-                <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-            </ul>
-        </div>
-    </footer>`;
-  }
-}
-
-customElements.define("special-header", SpecialHeader);
-customElements.define("special-footer", SpecialFooter);
-
-const nav = $(".nav-list");
-const btn = $(".fa-bars");
-
-btn.on("click", () => {
-  btn.toggleClass("fa-solid fa-x");
-  nav.toggleClass("show-nav");
-});
-
 let allMovieData = [
   {
     id: 1,
@@ -258,6 +180,7 @@ let allMovieData = [
 ];
 const availableMovies = [];
 const unavailableMovies = [];
+// sorting movies now showing and coming soon
 function sortMovies() {
   allMovieData.forEach((item) => {
     if (item.releaseDate !== undefined) {
@@ -268,8 +191,114 @@ function sortMovies() {
   });
 }
 sortMovies();
+// adding header and footer
+class SpecialHeader extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<header class="nav-bar">
+
+        <!-- logo container -->
+        <div class="logo-container">
+            <a href="#">Cineplex |</a>
+        </div>
+        <!-- nav links -->
+        <ul class="nav-list">
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./movies.html">MOVIES</a></li>
+            <li><a href="#">TICKETS</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><a href="#">PROMOTIONS</a></li>
+            <li><a href="#">THEATER INFO</a></li>
+        </ul>
+        <!-- login and register container -->
+        <div class="login-container">
+            <button href="#" class="register"><span class="cover"></span><i class="fa-regular fa-user"></i> Sign
+                up</button>
+            <button href="#" class="login"><span class="cover"></span><i class="fa-solid fa-right-to-bracket"></i>
+                Login</button>
+        </div>
+        <!-- nav toggle btn -->
+        <button class="nav-btn">
+            <i class="fas fa-bars"></i>
+            <!-- login tag -->
+            <a href="#"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+        </button>
+
+        <div class="small-movie-nav">
+            <a class="now-btn active">Now showing</a>
+            <a class="upcoming-btn">Coming soon</a>
+        </div>
+    </header>`;
+  }
+}
+
+class SpecialFooter extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<footer class="footer">
+        <div class="footer-left">
+            <ul>
+                <li><a href="./index.html">HOME</a></li>
+                <li><a href="#">EVENTS</a></li>
+                <li><a href="./movies.html">MOVIES</a></li>
+                <li><a href="#">TICKETS</a></li>
+                <li><a href="#">PROMOTIONS</a></li>
+                <li><a href="#">THEATER INFO</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">CAREERS</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">ADVERTISE</a></li>
+                <li><a href="#">DISCLAIMER</a></li>
+                <li><a href="#">CONTACT US</a></li>
+                <li><a href="#">TERMS AND CONDITIONS</a></li>
+            </ul>
+            <div class="copyright">
+                <p>© Copyright 2023</p>
+                <p>Cineplex Cinema Design, Inc.</p>
+                <p>All rights reserved</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <ul>
+                <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            </ul>
+        </div>
+    </footer>`;
+  }
+}
+
+customElements.define("special-header", SpecialHeader);
+customElements.define("special-footer", SpecialFooter);
+
+// adding color to nav when scrolling
+
+$(window).on("scroll", () => {
+  const nav = $(".nav-bar");
+  const smallNavBtn = $(".nav-btns");
+  const scroll = Math.round($(window).scrollTop());
+
+  if (scroll > 1) {
+    nav.addClass("nav-scrolled");
+  } else {
+    $(".nav-scrolled").removeClass("nav-scrolled");
+  }
+});
+
+const nav = $(".nav-list");
+const btn = $(".fa-bars");
+
+btn.on("click", () => {
+  btn.toggleClass("fa-solid fa-x");
+  nav.toggleClass("show-nav");
+});
+
 const carousel = $(".carousel");
 
+// coming soon sliders
 const loadSlider = (arr) => {
   let sliders = arr.map((item) => {
     let releaseDate = "NOW SCREENING";
@@ -290,7 +319,8 @@ const loadSlider = (arr) => {
   sliders = sliders.join("");
   return sliders;
 };
-let url = "https://i.ytimg.com/vi/nA7-qKCg3B8/maxresdefault.jpg";
+let url =
+  "https://mylifefm.com/wp-content/uploads/2024/02/Argylle-Movie-banner.jpg";
 $(".banner-img").attr("src", `${url}`);
 carousel.html(loadSlider(unavailableMovies));
 
